@@ -2,7 +2,7 @@
 
 #### Live link
 
-`Live website` [Click here](https://unique-resume.vercel.app/)
+`Live website` [Click here]
 <!-- `client-side` [Click here](https://unique-resume.vercel.app/) -->
 <!-- `server-side` [Click here]() -->
 
