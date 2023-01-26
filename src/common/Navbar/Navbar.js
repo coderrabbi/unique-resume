@@ -17,13 +17,18 @@ const menuItems = [
   },
   {
     name: "Cover letters",
-    path: "/teams",
+    path: "/cover-letter",
     id: 3,
+  },
+  {
+    name: "About",
+    path: "/about",
+    id: 4,
   },
   {
     name: "Contact",
     path: "/contact",
-    id: 4,
+    id: 5,
   },
 ];
 const Navbar = ({ iaAuthenticated }) => {
@@ -45,8 +50,8 @@ const Navbar = ({ iaAuthenticated }) => {
     setIsMenu(!isMenu);
   };
   return (
-    <div>
-      <header className="fixed w-full mx-auto animate-in z-[100] mb-10">
+    <div className="bg-primary sticky z-50 top-0">
+      <header className="w-full mx-auto">
         <nav className="bg-blue-900/60 lg:w-full backdrop-blur-sm dark:backdrop-blur-sm border-gray-200 px-4 lg:px-6 py-2.5">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <Link to="/" className="flex items-center">
@@ -184,7 +189,7 @@ const Navbar = ({ iaAuthenticated }) => {
                     ) : (
                       <>
                         <span className="flex flex-col lg:flex-row md:w-fit w-full justify-between items-center gap-3">
-                          <Link to="/auth/login">
+                          <Link to="login">
                             <button
                               className="border border-secondary bg-primary inline-block px-6 py-2.5  font-medium text-sm leading-tight uppercase rounded shadow-md hover:bg-primary_btn hover:shadow-lg focus:bg-primary_btn focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary_btn active:shadow-lg transition duration-150 ease-in-out  text-white md:w-fit"
                               data-mdb-ripple="true"

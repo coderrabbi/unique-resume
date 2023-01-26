@@ -7,8 +7,11 @@ import Contact from "../Pages/Contact/Contact";
 import Home from "../Pages/Home";
 import NotFound from "../Pages/NotFound/NotFound";
 import ForgotPassword from "../Pages/ForgotPassword/ForgotPassword";
-import CVTempletes from "../Pages/CV/CVTempletes";
-import CVTemplate from "../Pages/CV/CVTemplate";
+import CvTemplates from "../Pages/CV/CvTemplates";
+import CVpage from "../Pages/CVpage/CVpage";
+import ResumePage from "../Pages/ResumePage/ResumePage";
+import CoverLetterPage from "../Pages/CoverLetterPage/CoverLetterPage";
+import Template4 from "../Pages/ResumeTemplate/Template4";
 
 export const router = createBrowserRouter([
   {
@@ -24,13 +27,23 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/cv-templetes",
-        element: <CVTemplate />,
+        path: "/cv-template",
+        element: <CvTemplates />,
+      },
+
+      {
+        path: "/cv-templates",
+        element: <CVpage />,
       },
       {
-        path: "/cv-templete",
-        element: <CVTempletes />,
+        path: "/resume-templates",
+        element: <ResumePage />,
       },
+      {
+        path: "/resume-Template4",
+        element: <Template4 />,
+      },
+
       {
         path: "/about",
         element: <About />,
@@ -43,6 +56,10 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/cover-letter",
+        element: <CoverLetterPage />,
       },
       {
         path: "/forgot-password",

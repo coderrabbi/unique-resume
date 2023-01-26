@@ -34,7 +34,7 @@ const Contact = () => {
       <form ref={form} onSubmit={sendEmail} className='form-control p-12'>
         <h4 className='text-center text-3xl text-secondary'>Contact Us</h4>
         <h1 className='text-center text-white text-xl my-4'>
-          Have any queries? Send a message now.
+        Have any queries? Send a message now.
         </h1>
         <label className='label text-lg mt-2'>Name</label>
         <input
@@ -61,16 +61,12 @@ const Contact = () => {
         />
         <label className='label text-lg'>Type message</label>
         <textarea
-          name='message'
+        name='message'
           placeholder='Your message'
           className='textarea textarea-accent'
           required
         ></textarea>
-        <input
-          type='submit'
-          value='Send Message'
-          className='btn bg-gradient-to-r from-accent to-secondary text-xl text-white capitalize mt-4'
-        />
+        <input type='submit' value='Send Message' className='btn bg-gradient-to-r from-accent to-secondary text-xl text-white capitalize mt-4' />
       </form>
     </section>
   );

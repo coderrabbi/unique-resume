@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Col, Form, Progress, Row, Space, Upload } from "antd";
 import { useForm } from "react-hook-form";
 
-import "./CVTempletes.css";
+import "./CvTemplates.css";
 import {
   ApartmentOutlined,
   AuditOutlined,
@@ -16,14 +16,24 @@ import {
   PlusCircleOutlined,
   PlusOutlined,
 } from "@ant-design/icons";
+import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance";
 
 // .......................................
 
 // .......................................content-none
 
-const CVTempletes = () => {
-  const [mainData, setMainData] = useState([]);
+const CvTemplates = () => {
+  const [mainData, setMainData] = useState("");
+  const [data, setData] = useState(null);
+  if (mainData) {
+    localStorage.setItem("userInfo", JSON.stringify(mainData));
+  }
 
+  useEffect(() => {
+    const userData = localStorage.getItem("userInfo");
+    setData(userData);
+  }, [mainData]);
   // .....................
   const onFinish = (values) => {
     console.log("Received values of form:", values);
@@ -38,7 +48,19 @@ const CVTempletes = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    console.log(data);
     setMainData(data);
+  };
+
+  const userSubmit = async (e) => {
+    e.preventDefault();
+    const { data } = await axiosInstance.post(`/api/user-update`, mainData, {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    console.log(data);
   };
 
   //   image
@@ -46,6 +68,7 @@ const CVTempletes = () => {
   const onChange = ({ fileList: newFileList }) => {
     setFileList(newFileList);
   };
+
   const onPreview = async (file) => {
     let src = file.url;
     if (!src) {
@@ -96,7 +119,11 @@ const CVTempletes = () => {
     <section className="">
       <Row className="px-20  w-full text-left bg-gray-100  flex justify-between items-top">
         <Col span={12} className="mb-20">
-          <form className="mr-5 mt-20" onChange={handleSubmit(onSubmit)}>
+          <form
+            className="mr-5 mt-20"
+            onSubmit={userSubmit}
+            onChange={handleSubmit(onSubmit)}
+          >
             <h1 className="text-3xl font-semibold">Personal Details</h1>
             <div className="flex justify-items-stretch">
               {/* Job Title */}
@@ -1068,9 +1095,14 @@ const CVTempletes = () => {
                 </h3>
               </div>
             </section>
+
+            <button type="submit" className="bg-green-500 py-3 px-4 text-xl">
+              set Data
+            </button>
           </form>
         </Col>
         <Col span={12}>
+          {" "}
           <div className="book mt-20">
             <div className="page">
               <div className="subpage ">
@@ -1271,4 +1303,4 @@ const CVTempletes = () => {
   );
 };
 
-export default CVTempletes;
+export default CvTemplates;

@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { loadUser } from "./reducers/loadUser";
+import { dataReducer } from "./reducers/dataReducer";
 import { userReducer } from "./reducers/userReducer";
 
 const store = configureStore({
   reducer: {
     user: userReducer,
-    userData: loadUser,
+    cvdata: dataReducer,
   },
 });
 
